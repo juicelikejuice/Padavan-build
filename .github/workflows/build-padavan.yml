@@ -59,7 +59,8 @@ jobs:
         #以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
         ######################################################################
         sed -i 's/1.5.3/1.7.5/g' user/xray/Makefile
-        rm user/xray/xray
+        sed -i 's/GITHUB_ACTION),n/CONFIG_FIRMWARE_INCLUDE_XRAY),y/g' user/xray/Makefile
+        sed -i 's/all:/all: /g' user/xray/Makefile
         ##科学上网##
         echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config #科学上网插件，选择n后全部有关插件都不集成
         echo "CONFIG_FIRMWARE_INCLUDE_XRAY=y" >> .config #集成xray执行文件 ~4.5M
