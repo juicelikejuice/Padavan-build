@@ -32,7 +32,7 @@ jobs:
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
     - name: Clone source code
       run: |
-        git clone --depth=1 https://github.com/MeIsReallyBa/padavan-4.4.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/juicelikejuice/padavan-4.4.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
@@ -58,8 +58,7 @@ jobs:
         ######################################################################
         #以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
         ######################################################################
-        sed -i 's/1.5.3/0.0.1/g' user/xray/Makefile
-        sed -i 's/XTLS/juicelikejuice/g' user/xray/Makefile
+        sed -i 's/1.5.3/1.8.8/g' user/xray/Makefile
         sed -i 's/GITHUB_ACTION),n/CONFIG_FIRMWARE_INCLUDE_XRAY),y/g' user/xray/Makefile
         sed -i 's/all:/all: /g' user/xray/Makefile
         ##科学上网##
